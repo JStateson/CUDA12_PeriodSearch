@@ -1,0 +1,25 @@
+You must have built boinc 8.02 and have a D drive
+You must create 5 symlinks providing the location of boinc
+If boinc is located at c:\MyFavoriteBoinc then ---
+
+In the win11 admin command prompt:
+
+mklink /D c:\boinc c:\MyFavoriteBoinc
+mkdir c:\boincsdk
+mklink /D c:\boincsdk\boinc c:\MyFavoriteBoinc
+mklink /D c:\boincsdk\boinc_repo c:\MyFavoriteBoinc
+mkdir d:\boincsdk
+mklink /D d:\boincsdk\boinc c:\MyFavoriteBoinc
+mklink /D d:\boincsdk\boinc_repo c:\MyFavoriteBoinc
+
+At c:\MyFavoriteBoinc copy two pairs of libraries as follows
+
+in MyFavoriteBoinc\win_build\Build\x64\Release
+copy libboincapi.lib libboincapi_staticcrt.lib
+copy libboinc.lib libboinc_staticcrt.lib
+
+in MyFavoriteBoinc\win_build\Build\x64\Debug
+copy libboincapi.lib libboincapi_staticcrt.lib
+copy libboinc.lib libboinc_staticcrt.lib
+
+

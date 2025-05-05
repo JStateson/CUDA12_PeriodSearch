@@ -1,0 +1,81 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+*.iobj
+*.ipdb
+*.pdb
+*.idb
+*.log
+
+# CUDA
+*.cu.obj
+*.cubin
+*.ptx
+*.fatbin
+*.gpu
+*.cu.d
+*.cudafe*
+*.tmp
+*.nvcc*
+*.cuda*
+*.nvc*
+*.nvi*
+*.nvlink*
+*.nvlog
+
+# Intermediate files
+*.tlog
+*.lastbuildstate
+*.suo
+*.sdf
+*.cache
+*.db
+*.VC.db
+*.vcxproj.user
+*.opensdf
+*.user
+*.userosscache
+*.unsuccessfulbuild
+ipch/
+*.ipch
+
+# Precompiled headers
+*.pch
+*.gch
+
+# Other VS generated files
+*.obj
+*.idb
+*.res
+*.ncb
+*.aps
+*.bak
+
+# VS Code or CLion (if you use them alongside)
+.vscode/
+.idea/
+
+# CMake (if used)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# VS specific folders
+.vs/
+
+# Crash dumps or diagnostic logs
+*.dmp
+*.mdmp
+
+# Other common files to ignore
+Thumbs.db
+.DS_Store
+
+# Git itself
+.git/
