@@ -1,4 +1,4 @@
-This README came the asteroid at home website. No changes were made to the source code  The only changes made were to the MS build procedures to allow easy compilation and linkage of the code in VS2022 using CUDA 12.8 in windows 11
+This README came from the asteroid at home website. No changes were made to the source code  The only changes made were to the MS build procedures to allow easy compilation and linkage of the code in VS2022 using CUDA 12.8 in windows 11.  View the readfirst file.
 
 ![This is an image](/graphic_app/asteroids_logo_1.png)
 
