@@ -11,6 +11,7 @@
 *.pdb
 *.idb
 *.log
+*.deps
 
 # CUDA
 *.cu.obj
@@ -79,3 +80,4 @@ Thumbs.db
 
 # Git itself
 .git/
+*.FileListAbsolute.txt
