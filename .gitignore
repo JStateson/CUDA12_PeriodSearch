@@ -80,4 +80,9 @@ Thumbs.db
 
 # Git itself
 .git/
+
+# misc or unknown but ai says not needed
+
 *.FileListAbsolute.txt
+*.rc_
+*.aps_
