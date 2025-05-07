@@ -87,3 +87,4 @@ Thumbs.db
 *.h_
 *.hpp_
 *.recipe
+*.a
