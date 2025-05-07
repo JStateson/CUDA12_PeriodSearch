@@ -1,4 +1,5 @@
-This README came from the asteroid at home website. No changes were made to the source code  The only changes made were to the MS build procedures to allow easy compilation and linkage of the code in VS2022 using CUDA 12.8 in windows 11.  View the readfirst file.
+This README came from the asteroid at home website. No changes were made to the source code  The only changes made were to the MS build procedures to allow easy compilation and linkage of the code in VS2022 using CUDA 12.8 in windows 11.  View the readfirst file.  Download the Win11 CUDA 12.8 toolkit <a href="https://developer.nvidia.com/cuda-12-8-0-download-archive?target_os=Windows&target_arch=x86_64&target_version=11" target="_blank">here</a>.
+
 
 ![This is an image](/graphic_app/asteroids_logo_1.png)
 

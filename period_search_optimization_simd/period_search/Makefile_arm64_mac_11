@@ -1,0 +1,71 @@
+# stand-alone makefile for uc2 BOINC example application on Macintosh.
+# Updated 2/16/10 for OS 10.6 and XCode 3.2
+#
+
+BUILD_DIR = build
+BOINC_DIR = ../../../boinc
+BOINC_API_DIR = $(BOINC_DIR)/api
+BOINC_LIB_DIR = $(BOINC_DIR)/lib
+BOINC_BUILD_DIR = $(BOINC_DIR)/mac_build/build/Deployment
+BOINC_CONFIG_DIR =  $(BOINC_DIR)/clientgui/mac
+FRAMEWORKS_DIR = /System/Library/Frameworks
+PS_COMMON_DIR = ../../period_search_common
+PS_COMMON_LIB_DIR = $(PS_COMMON_DIR)/build
+
+CXX = /Library/Developer/CommandLineTools/usr/bin/g++
+CXXFLAGS = -O3 -w -arch arm64 -target arm64-apple-macos11 -std=c++2a -s -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -fvisibility=hidden -fvisibility-inlines-hidden \
+    -DARM64 \
+    -I$(BOINC_CONFIG_DIR) \
+	-I$(BOINC_DIR) \
+	-I$(BOINC_LIB_DIR) \
+	-I$(BOINC_API_DIR) \
+	-I$(PS_COMMON_DIR) \
+	-L$(PS_COMMON_LIB_DIR) \
+    -L$(BOINC_BUILD_DIR) \
+	-L.
+
+LDFLAGS = -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk,-arch,arm64
+
+# Define the target executable
+TARGET = $(BUILD_DIR)/period_search_BOINC_macos_10222_arm64_Release
+
+# Define the source files
+SRC = areanorm.cpp blmatrix.cpp bright.cpp \
+	conv.cpp \
+	covsrt.cpp CpuInfoArm64.cpp curv.cpp \
+	ellfit.cpp EnumHelpers.cpp gauss_errc.cpp \
+	bright_asimd.cpp conv_asimd.cpp curv_asimd.cpp gauss_errc_asimd.cpp mrqcof_asimd.cpp \
+	lubksb.cpp ludcmp.cpp matrix.cpp \
+	mrqcof.cpp \
+	mrqmin.cpp phasec.cpp sphfunc.cpp systeminfo.cpp \
+	trifac.cpp VersionInfo.cpp period_search_BOINC.cpp
+
+
+# Define the object files
+OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)
+
+# Default target to build the executable
+all: $(BUILD_DIR) $(TARGET)
+
+# Rule to create build directory
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+ # Rule to build the static library
+$(TARGET): $(OBJ) $(BOINC_LIB_DIR)/libboinc.a $(BOINC_API_DIR)/libboinc_api.a $(PS_COMMON_LIB_DIR)/libps_common.a
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJ) -pthread \
+	$(PS_COMMON_LIB_DIR)/libps_common.a \
+	$(BOINC_API_DIR)/libboinc_api.a \
+	$(BOINC_LIB_DIR)/libboinc.a \
+	-lm -framework AppKit
+
+# Rule to build object files
+$(BUILD_DIR)/%.o: %.cpp
+	@mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Clean rule to remove compiled files
+clean:
+	rm -rf $(BUILD_DIR)
+
+.PHONY: all clean

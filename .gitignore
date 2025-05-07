@@ -86,3 +86,7 @@ Thumbs.db
 *.FileListAbsolute.txt
 *.rc_
 *.aps_
+*.cpp_
+*.h_
+*.hpp_
+*.recipe

@@ -11,12 +11,11 @@ namespace TimeTests
         {
             string nl = Environment.NewLine;
             string filePath = "stderr.txt";
-            //string filePath = @"C:\Users\josep\source\repos\PeriodSearch\period_search_petri\x64_v12.8\Release\i7-9800x_2080s\stderr.txt";
-
             List<string> TimeEntries = new List<string>();
             List<string> AppName = new List<string>();
             List<string> CPUName = new List<string>();
             List<string> TGTName = new List<string>();
+            List<string> OVRName = new List<string>();
 
             if (!File.Exists(filePath))
             {
@@ -41,6 +40,10 @@ namespace TimeTests
                     if (line.Contains("Target") || line.Contains("Using") || line.Contains("NVIDIA"))
                     {
                         TGTName.Add(line);
+                    }
+                    if (line.Contains("Override"))
+                    {
+                        OVRName.Add(line);
                     }
                     if (line.Contains("standalone") || line.Contains("boinc_finish"))
                     {
@@ -69,18 +72,19 @@ namespace TimeTests
 
                     string tName = "APP did not provide GPU name";
                     if (TGTName.Count > 0) tName = TGTName[TGTName.Count - 1];
-                    else Console.WriteLine(tName);
+                    Console.WriteLine(tName);
 
                     string cName = "APP did not provide CPU name";
                     if (CPUName.Count > 0) cName = CPUName[CPUName.Count - 1];
-                    else Console.WriteLine(cName);
+                    Console.WriteLine(cName);
+
+                    string oName = "APP was not overridden";
+                    if (OVRName.Count > 0) oName = OVRName[OVRName.Count - 1];
+                    Console.WriteLine(oName);
+
 
                     string sTimeDiff = TimeDiff.ToString(@"hh\:mm\:ss");
 
-                    if (CPUName.Count > 0)
-                        Console.WriteLine(cName);
-                    if (TGTName.Count > 0)
-                        Console.WriteLine(tName);
                     Console.WriteLine(TimeEntries[n] + nl + TimeEntries[n - 1] + " Minutes " + sTimeDiff);
                 }
             }

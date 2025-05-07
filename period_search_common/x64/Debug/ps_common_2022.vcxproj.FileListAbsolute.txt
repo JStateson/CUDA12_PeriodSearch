@@ -1,0 +1,1 @@
+C:\Users\josep\source\repos\CUDA12_PeriodSearch\period_search_common\x64\Debug\ps_commond.lib

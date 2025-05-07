@@ -1,0 +1,77 @@
+# This should work on Linux.  Modify as needed for other platforms.
+#
+#	The following Makefile produces armv7 32bit period-search application. Tested on RPi CM4 2GB running 64-bit Buster distro.
+#	Try to use environment based on GLIBC v2.28
+#   Before you start you might need to install the following packages:
+#		binutils-arm-linux-gnueabihf | 2.31.1-16
+#		g++-arm-linux-gnueabihf | 4:8.3.0-1
+#
+#	Prepare BOINC API as follows:	
+#		./_autosetup # Only first time
+#		./configure --disable-server --disable-client --disable-manager --build=aarch64-unknown-linux-gnu
+#		make
+#
+#	To check for the supported macroses use:
+#		echo | g++ -dM -E -
+#		echo | clang++ -dM -E -
+#
+
+BUILD_DIR = build
+BOINC_DIR = ../../../boinc_src
+BOINC_API_DIR = $(BOINC_DIR)/api
+BOINC_LIB_DIR = $(BOINC_DIR)/lib
+PS_COMMON_DIR = ../../period_search_common
+PS_COMMON_LIB_DIR = $(PS_COMMON_DIR)/build
+
+CXX = clang++
+CXXFLAGS = -march=armv8-a -O3 -std=c++2a -frecord-gcc-switches \
+    -DARM64 \
+	-I$(BOINC_DIR) \
+	-I$(BOINC_LIB_DIR) \
+	-I$(BOINC_API_DIR) \
+	-I$(PS_COMMON_DIR) \
+	-L$(PS_COMMON_LIB_DIR) \
+	-L.
+
+#     -L /usr/arm-linux-gnueabihf/include/c++/10 \
+
+# Define the target executable
+TARGET = $(BUILD_DIR)/period_search_rpi_armv8_arm64 
+
+# Define the source files
+SRC = areanorm.cpp blmatrix.cpp bright.cpp \
+	conv.cpp \
+	covsrt.cpp CpuInfoArm64.cpp curv.cpp \
+	ellfit.cpp EnumHelpers.cpp gauss_errc.cpp \
+	lubksb.cpp ludcmp.cpp matrix.cpp \
+	mrqcof.cpp \
+	mrqmin.cpp phasec.cpp sphfunc.cpp systeminfo.cpp \
+	trifac.cpp VersionInfo.cpp period_search_BOINC.cpp
+# Define the object files
+OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)
+
+# Default target to build the executable
+all: $(BUILD_DIR) $(TARGET)
+
+# Rule to create build directory
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+ # Rule to build the static library
+$(TARGET): $(OBJ) $(BOINC_LIB_DIR)/libboinc.a $(BOINC_API_DIR)/libboinc_api.a $(PS_COMMON_LIB_DIR)/libps_common.a
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJ) -pthread \
+	$(PS_COMMON_LIB_DIR)/libps_common.a \
+	$(BOINC_API_DIR)/libboinc_api.a \
+	$(BOINC_LIB_DIR)/libboinc.a \
+	-lm
+
+# Rule to build object files
+$(BUILD_DIR)/%.o: %.cpp
+	@mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Clean rule to remove compiled files
+clean:
+	rm -rf $(BUILD_DIR)
+
+.PHONY: all clean
