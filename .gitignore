@@ -77,9 +77,6 @@ cmake_install.cmake
 Thumbs.db
 .DS_Store
 
-# Git itself
-.git/
-
 # misc or unknown but ai says not needed
 
 *.FileListAbsolute.txt
