@@ -65,7 +65,6 @@ ipch/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
-Makefile
 
 # VS specific folders
 .vs/
