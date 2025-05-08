@@ -7,8 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pscuda_12_0", "period_searc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ps_common_2022", "period_search_common\ps_common_2022.vcxproj", "{11512441-BBDA-4B9D-8A83-A7262E2FD24D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTests", "TimeTests\TimeTests.csproj", "{E02FD11D-E85A-4106-938D-3B2CB060BD49}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pssimd_vs2022", "period_search_optimization_simd\pssimd_vs2022.vcxproj", "{32F8FCDD-C9FD-40F0-98C2-D037638A2BD7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "psfma_vs2022", "period_search_optimization_avx_fma\psfma_vs2022.vcxproj", "{F299E54A-5576-4C0E-865C-1A969D794028}"
@@ -16,6 +14,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "psavx512_vs2022", "period_search_optimization_avx_fma\psavx512_vs2022.vcxproj", "{5FD40339-0F97-48AE-8970-9A170BC7AADA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "psavx_vs2022", "period_search_optimization_avx_fma\psavx_vs2022.vcxproj", "{2933B6B4-03EE-49F0-AC8B-C8853FC50F15}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TimeTests", "TimeTests\TimeTests.vcxproj", "{4A3CC5A6-8E4E-4D92-863A-9DF327538A73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,14 +41,6 @@ Global
 		{11512441-BBDA-4B9D-8A83-A7262E2FD24D}.Release|Any CPU.Build.0 = Release|x64
 		{11512441-BBDA-4B9D-8A83-A7262E2FD24D}.Release|x64.ActiveCfg = Release|x64
 		{11512441-BBDA-4B9D-8A83-A7262E2FD24D}.Release|x64.Build.0 = Release|x64
-		{E02FD11D-E85A-4106-938D-3B2CB060BD49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E02FD11D-E85A-4106-938D-3B2CB060BD49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E02FD11D-E85A-4106-938D-3B2CB060BD49}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E02FD11D-E85A-4106-938D-3B2CB060BD49}.Debug|x64.Build.0 = Debug|Any CPU
-		{E02FD11D-E85A-4106-938D-3B2CB060BD49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E02FD11D-E85A-4106-938D-3B2CB060BD49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E02FD11D-E85A-4106-938D-3B2CB060BD49}.Release|x64.ActiveCfg = Release|Any CPU
-		{E02FD11D-E85A-4106-938D-3B2CB060BD49}.Release|x64.Build.0 = Release|Any CPU
 		{32F8FCDD-C9FD-40F0-98C2-D037638A2BD7}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{32F8FCDD-C9FD-40F0-98C2-D037638A2BD7}.Debug|Any CPU.Build.0 = Debug|x64
 		{32F8FCDD-C9FD-40F0-98C2-D037638A2BD7}.Debug|x64.ActiveCfg = Debug|x64
@@ -81,6 +73,14 @@ Global
 		{2933B6B4-03EE-49F0-AC8B-C8853FC50F15}.Release|Any CPU.Build.0 = Release|x64
 		{2933B6B4-03EE-49F0-AC8B-C8853FC50F15}.Release|x64.ActiveCfg = Release|x64
 		{2933B6B4-03EE-49F0-AC8B-C8853FC50F15}.Release|x64.Build.0 = Release|x64
+		{4A3CC5A6-8E4E-4D92-863A-9DF327538A73}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{4A3CC5A6-8E4E-4D92-863A-9DF327538A73}.Debug|Any CPU.Build.0 = Debug|x64
+		{4A3CC5A6-8E4E-4D92-863A-9DF327538A73}.Debug|x64.ActiveCfg = Debug|x64
+		{4A3CC5A6-8E4E-4D92-863A-9DF327538A73}.Debug|x64.Build.0 = Debug|x64
+		{4A3CC5A6-8E4E-4D92-863A-9DF327538A73}.Release|Any CPU.ActiveCfg = Release|x64
+		{4A3CC5A6-8E4E-4D92-863A-9DF327538A73}.Release|Any CPU.Build.0 = Release|x64
+		{4A3CC5A6-8E4E-4D92-863A-9DF327538A73}.Release|x64.ActiveCfg = Release|x64
+		{4A3CC5A6-8E4E-4D92-863A-9DF327538A73}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
