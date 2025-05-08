@@ -1,1 +1,0 @@
-C:\Users\josep\source\repos\PeriodSearch\TimeTests\bin\Release\net8.0\TimeTests.exe

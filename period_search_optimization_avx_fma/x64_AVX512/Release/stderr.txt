@@ -1,8 +1,0 @@
-2025-05-02 06:43:06 (27016): Can't open init data file - running in standalone mode
-BOINC client version 0.0.0
-Application: Period_search_Windows_10.0_x64_AVX512_Release.exe
-Version: 102.15.0.1
-CPU: Intel(R) Core(TM) i7-9800X CPU @ 3.80GHz
-Target instruction set: AVX512
-RAM: 63GB
-2025-05-02 06:51:12 (27016): called boinc_finish(0)
