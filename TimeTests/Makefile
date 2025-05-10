@@ -3,7 +3,7 @@ BUILD_DIR = build
 CXX = g++
 CXXFLAGS = -march=x86-64 -O3 -std=c++2a -w -s -L.
 
-TARGET =$(BUILD_DIR)/LinuxTestRelease
+TARGET =$(BUILD_DIR)/TimeTestsLinux
 SRC = TimeTests.cpp
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)
 
