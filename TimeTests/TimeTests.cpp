@@ -37,6 +37,7 @@ std::string minutesToTime(double totalMinutes) {
     return oss.str();
 }
 
+
 // no need to use vectors, just wanted to use them at first
 
 int main() {
@@ -80,6 +81,7 @@ int main() {
 		if (line.find("Override") != std::string::npos) {
 			OVRName.push_back(line);
 		}
+        
 
         if ((line.find("standalone") != std::string::npos) ||
             (line.find("boinc_finish") != std::string::npos)) {
@@ -98,7 +100,13 @@ int main() {
                     current += ch;
                 }
             }
-            TimeEntries.push_back(words[1]);
+
+            // With the following line:
+            const char* ch = words[0].c_str();
+			if (strchr(ch, ':'))           // some apps haved dates in the first column
+                TimeEntries.push_back(words[0]);           
+            else 
+                TimeEntries.push_back(words[1]);
             if (line.find("boinc_finish") != std::string::npos)
             {
                 n = TimeEntries.size() - 1;
