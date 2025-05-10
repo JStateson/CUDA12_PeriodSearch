@@ -14,14 +14,18 @@
 BOINC_DIR = ../../../boinc_src
 BOINC_API_DIR = $(BOINC_DIR)/api
 BOINC_LIB_DIR = $(BOINC_DIR)/lib
-CUDA_PATH = ../../../cuda-12.8
+CUDA_PATH = /usr/local/cuda-12
 # END DO-NOT-CHANGE
+
+COMMON_OBJ = ../../period_search_common
+COBJS = $(patsubst $(COMMON_OBJ)/%.O)
 
 CXXFLAGS = -g -O3 \
 	-I$(BOINC_DIR) \
 	-I$(BOINC_LIB_DIR) \
 	-I$(BOINC_API_DIR) \
 	-I$(CUDA_PATH)/include \
+	-I ../../period_search_common \
 	-L /usr/X11R6/lib \
 	-L.
 
@@ -48,8 +52,8 @@ LDFLAGS=-lm -lrt -Xlinker -rpath .
 
 MY_LIBS=trifac.o areanorm.o sphfunc.o ellfit.o ludcmp.o lubksb.o mrqmin.o mrqcof.o\
 		curv.o blmatrix.o conv.o covsrt.o matrix.o bright.o memory.o\
-	dot_product.o gauss_errc.o pscuda.device-link.o start_CUDA.o curve2_CUDA.o Start.o\
-	ComputeCapability.o
+	$(COMMON_OBJ)/dot_product.o $(COMMON_OBJ)/LcHelpers.o gauss_errc.o pscuda.device-link.o start_CUDA.o curve2_CUDA.o Start.o\
+	ComputeCapability.o 
 
 PROGS = period_search_BOINC_cuda12000
 
