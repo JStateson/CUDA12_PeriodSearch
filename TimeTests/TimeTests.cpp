@@ -47,7 +47,7 @@ int main() {
     std::vector<double> TimeSpan;
 
     std::string nl = "\n";
-    std::string filePath = "c:\\dvdimages\\stderr.txt";
+    std::string filePath = "stderr.txt";
 
 	std::ifstream file(filePath);
 
@@ -125,6 +125,7 @@ int main() {
 
 				std::cout << TimeEntries[n] << nl << TimeEntries[n - 1] <<
                     " Minutes " << sTimeDiff << std::endl;
+                break;
             }
         }
 
