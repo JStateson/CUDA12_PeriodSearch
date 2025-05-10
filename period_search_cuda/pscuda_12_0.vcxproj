@@ -39,15 +39,11 @@
     <ClCompile Include="period_search\sphfunc.cpp" />
     <ClCompile Include="period_search\trifac.cpp" />
   </ItemGroup>
-  
   <ItemGroup>
     <ClCompile Include="$(BaseFolderName)\period_search_common\arrayHelpers.cpp" />
     <ClCompile Include="$(BaseFolderName)\period_search_common\dot_product.cpp" />
     <ClCompile Include="$(BaseFolderName)\period_search_common\LcHelpers.cpp" />
   </ItemGroup>
-
-
-
   <ItemGroup>
     <CudaCompile Include="period_search\blmatrix.cu" />
     <CudaCompile Include="period_search\bright.cu" />
@@ -68,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="period_search\pscuda120.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="period_search\Makefile" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2F92DCB3-5B07-4041-BC24-34399FB3480D}</ProjectGuid>

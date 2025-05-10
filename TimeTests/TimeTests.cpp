@@ -37,8 +37,10 @@ std::string minutesToTime(double totalMinutes) {
     return oss.str();
 }
 
+// no need to use vectors, just wanted to use them at first
+
 int main() {
-    int n = 0;
+    int  m, n = 0;
     std::vector<std::string> TimeEntries;
     std::vector<std::string> AppName;
     std::vector<std::string> CPUName;
@@ -97,40 +99,45 @@ int main() {
                 }
             }
             TimeEntries.push_back(words[1]);
-
-			n = TimeEntries.size() - 1;
-            if (n >= 1)
+            if (line.find("boinc_finish") != std::string::npos)
             {
+                n = TimeEntries.size() - 1;
+				m = AppName.size() + CPUName.size() + TGTName.size() + OVRName.size();  
+				if (n > 0 && m > 0)
+				{
+                    double endTime = timeToMinutes(TimeEntries[n]);
+                    double startTime = timeToMinutes(TimeEntries[n - 1]);
+                    double timeSpan = endTime - startTime;
+                    std::string sTimeDiff = minutesToTime(timeSpan);
 
-                double endTime = timeToMinutes(TimeEntries[n]);
-                double startTime = timeToMinutes(TimeEntries[n-1]);
-                double timeSpan = endTime - startTime;
-                std::string sTimeDiff = minutesToTime(timeSpan);
+                    std::string sName = "App did not provide its name";
+                    if (AppName.size()) sName = AppName[0];
+                    std::cout << sName << std::endl;
 
-                std::string sName = "App did not provide its name";
-				if (AppName.size() > 0) sName = AppName[AppName.size() - 1];
-				std::cout << sName << std::endl;
+                    std::string cName = "APP did not provide CPU name";
+                    if (CPUName.size())cName = CPUName[0];
+                    std::cout << cName << std::endl;
 
-                std::string cName = "APP did not provide CPU name";
-				if (CPUName.size() > 0)cName = CPUName[CPUName.size() - 1];
-				std::cout << cName << std::endl;
+                    std::string tName = "APP did not provide GPU name";
+                    if (TGTName.size()) tName = TGTName[0];
+                    std::cout << tName << std::endl;
 
-				std::string tName = "APP did not provide GPU name";
-				if (TGTName.size() > 0) tName = TGTName[TGTName.size() - 1];
-				std::cout << tName << std::endl;
+                    std::string oName = "APP was not overridden";
+                    if (OVRName.size()) oName = OVRName[0];
+                    std::cout << oName << std::endl;
 
-				std::string oName = "APP was not overridden";
-				if (OVRName.size() > 0) oName = OVRName[OVRName.size() - 1];
-				std::cout << oName << std::endl;
-
-				std::cout << TimeEntries[n] << nl << TimeEntries[n - 1] <<
-                    " Minutes " << sTimeDiff << std::endl;
-                break;
-            }
-        }
-
-
+                    std::cout << TimeEntries[n] << nl << TimeEntries[n - 1] <<
+                        " Minutes " << sTimeDiff << nl << std::endl;
+				}
+				TimeEntries.clear();
+				AppName.clear();
+				CPUName.clear();
+				TGTName.clear();
+				OVRName.clear();
+			}
+        }   
     }
+
 
     file.close();
     return 0;
